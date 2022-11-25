@@ -17,8 +17,8 @@ jobs:
       - name: Login Docker Hub
         run: docker login -u jadavilaperez -p ${{ secrets.DOCKER_HUB_TOKEN }}
       - name: Tag docker image
-        run: docker tag greeting jadavilaperez/greeting
+        run: docker tag greeting:0.0.1-SNAPSHOT jadavilaperez/greeting:0.0.1-SNAPSHOT
       - name: Push images
-        run: docker image push jadavilaperez/greeting:latest
+        run: docker image push jadavilaperez/greeting:0.0.1-SNAPSHOT
       - name: "Done!"
         run: echo "${{secrets.DOCKER_HUB_TOKEN}}"
