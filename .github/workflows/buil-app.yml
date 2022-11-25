@@ -16,7 +16,9 @@ jobs:
         run: mvn spring-boot:build-image
       - name: Login Docker Hub
         run: docker login -u jadavilaperez -p ${{ secrets.DOCKER_HUB_TOKEN }}
+      - name: Tag docker image
+        run: docker tag greeting jadavilaperez/greeting:latest
       - name: Push images
-        run: docker image push greeting:0.0.1-SNAPSHOT
+        run: docker image push jadavilaperez/greeting:latest
       - name: "Done!"
         run: echo "${{secrets.DOCKER_HUB_TOKEN}}"
