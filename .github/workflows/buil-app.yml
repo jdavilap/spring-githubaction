@@ -7,11 +7,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: graalvm/setup-graalvm@v1
-        with:
-          version: "latest"
-          java-version: "17"
-          components: "native-image"
       - name: Build app using maven
         run: mvn spring-boot:build-image
       - name: Login Docker Hub
