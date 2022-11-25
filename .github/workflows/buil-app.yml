@@ -10,10 +10,14 @@ jobs:
       - uses: actions/checkout@v3
       - uses: graalvm/setup-graalvm@v1
         with:
-          version: 'latest'
-          java-version: '17'
-          components: 'native-image'
+          version: "latest"
+          java-version: "17"
+          components: "native-image"
       - name: Build app using maven
-        run: "mvn -DskipTest=true -Pnative clean package"
-      - name: Done!
-        run: echo !Done
+        run: mvn spring-boot:build-image
+      - name: Login Docker Hub
+        run: docker login -u jadavilaperez -p ${{ secrets.DOCKER_HUB_TOKEN }}
+      - name: Push images
+        run: docker greeting:0.0.1-SNAPSHOT push
+      - name: "Done!"
+        run: echo "${{secrets.DOCKER_HUB_TOKEN}}"
