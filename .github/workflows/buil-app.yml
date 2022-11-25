@@ -18,6 +18,6 @@ jobs:
       - name: Login Docker Hub
         run: docker login -u jadavilaperez -p ${{ secrets.DOCKER_HUB_TOKEN }}
       - name: Push images
-        run: docker greeting:0.0.1-SNAPSHOT push
+        run: docker push jadavilaperez/greeting:0.0.1-SNAPSHOT
       - name: "Done!"
         run: echo "${{secrets.DOCKER_HUB_TOKEN}}"
