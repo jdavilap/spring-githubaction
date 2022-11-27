@@ -19,6 +19,6 @@ jobs:
       - name: Tag docker image
         run: docker tag greeting:0.0.1-SNAPSHOT jadavilaperez/greeting:latest
       - name: Push images
-        run: docker image push jadavilaperez/greeting:0.0.1-SNAPSHOT
+        run: docker image push jadavilaperez/greeting:latest
       - name: "Done!"
         run: echo "${{secrets.DOCKER_HUB_TOKEN}}"
